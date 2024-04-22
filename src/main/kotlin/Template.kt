@@ -1,9 +1,9 @@
 
     fun getCountOne(str: String) : Int {
         var count = 0
-        for (char in str.toCharArray()) {
+        for (char in str) {
             if (char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u') {
-                count += 1
+                count++
             }
         }
             return count
@@ -20,6 +20,6 @@
                 char == 'u' }.count()
     }
 
-    fun getCountFour(str: String) : Int {
+    fun getCount(str: String) : Int {
         return str.count { char: Char -> char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u' }
     }
