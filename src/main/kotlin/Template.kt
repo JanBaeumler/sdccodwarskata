@@ -23,7 +23,3 @@
     fun getCountFour(str: String) : Int {
         return str.count { char: Char -> char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u' }
     }
-
-    fun getCount(str: String) : Int {
-        return str.
-    }
