@@ -23,3 +23,7 @@
     fun getCount(str: String) : Int {
         return str.count { char: Char -> char == 'a' || char == 'e' || char == 'i' || char == 'o' || char == 'u' }
     }
+
+    fun getCountFive(str: String) : Int {
+        return str.count { it == 'a' || it == 'e' || it == 'i' || it == 'o' || it == 'u' }
+    }
