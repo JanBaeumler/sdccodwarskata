@@ -1,5 +1,5 @@
 fun duplicateCountOne(text: String): Int {
-    val chars:Set<Char> = text.toSet()
+    val chars: Set<Char> = text.toSet()
     println(text.length)
     println(chars.size)
     return text.length - chars.size
@@ -9,8 +9,8 @@ fun duplicateCountOne(text: String): Int {
 fun duplicateCountTwo(text: String): Int {
     val groupsOfChars = text.groupBy { it }
     var count = 0
-    for(chars in groupsOfChars){
-        if(chars.value.size > 1) {
+    for (chars in groupsOfChars) {
+        if (chars.value.size > 1) {
             count++
         }
     }
@@ -27,7 +27,7 @@ fun duplicateCountFour(text: String): Int {
     return groupsOfChars.count { it.value.size > 1 }
 }
 
-fun duplicateCount(text: String) =
-    text
-        .groupBy { it }
-        .count { it.value.size > 1 }
+fun duplicateCount(text: String) = text
+    .lowercase()
+    .groupBy { it }
+    .count { it.value.size > 1 }
