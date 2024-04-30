@@ -22,8 +22,7 @@ private fun IntArray.inOneMethod(maxOcurrences: Int) = this.filterIndexed { inde
 // Mit Tipp von Daniel Knuth
 private fun firstTry(elements: IntArray, maxOcurrences: Int) = elements.filterIndexed { index, i ->
     elements
-        .toList()
-        .slice(0 .. index)
+        .slice(0..index)
         .count { it == i } < maxOcurrences
 }.toIntArray()
 
