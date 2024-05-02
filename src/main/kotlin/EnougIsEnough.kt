@@ -1,8 +1,10 @@
 object EnoughIsEnough {
     fun deleteNth(elements: IntArray, maxOcurrences: Int): IntArray {
-        return elements.filterIndexed { index, i ->
-            !elements.isPresentInSubList(index, i) || elements.valueIsUnderMaxOcurrences(index, maxOcurrences, i)
-        }.toIntArray()
+        return elements
+            .filterIndexed { index, i ->
+                !elements.isPresentInSubList(index, i) ||
+                elements.valueIsUnderMaxOcurrences(index, maxOcurrences, i)
+            }.toIntArray()
     }
 
     private fun IntArray.isPresentInSubList(index: Int, element: Int) = this.createSublist(index).contains(element)
@@ -13,19 +15,12 @@ object EnoughIsEnough {
     private fun IntArray.createSublist(index: Int) = this.toList().subList(0, index)
 }
 
-private fun IntArray.inOneMethod(maxOcurrences: Int) = this.filterIndexed { index, i ->
-    !this.toList().subList(0, index).contains(i) || this.toList().subList(0, index).groupBy { it }
-        .getValue(i).size < maxOcurrences
-}.toIntArray()
-
-
-// Mit Tipp von Daniel Knuth
-private fun firstTry(elements: IntArray, maxOcurrences: Int) = elements.filterIndexed { index, i ->
-    elements
-        .slice(0..index)
-        .count { it == i } < maxOcurrences
-}.toIntArray()
-
+private fun IntArray.inOneMethod(maxOcurrences: Int): IntArray {
+    return this.filterIndexed { index, i ->
+        !this.toList().subList(0, index).contains(i) || this.toList().subList(0, index).groupBy { it }
+            .getValue(i).size < maxOcurrences
+    }.toIntArray()
+}
 
 private fun IntArray.uglyWay(maxOcurrences: Int): IntArray {
     val newList: MutableList<Int> = mutableListOf()
@@ -34,6 +29,12 @@ private fun IntArray.uglyWay(maxOcurrences: Int): IntArray {
             newList.add(element)
         }
     }
-    println(newList)
     return newList.toIntArray()
 }
+
+// Mit Tipp von Daniel Knuth
+private fun firstTry(elements: IntArray, maxOcurrences: Int) = elements.filterIndexed { index, i ->
+    elements
+        .slice(0..index)
+        .count { it == i } < maxOcurrences
+}.toIntArray()
