@@ -1,8 +1,7 @@
 fun high(str: String) = str
     .split(" ")
-    .maxByOrNull { it.toCharArray().sumOfOneWord() }!!
+    .maxBy { it.score() }
 
-
-fun CharArray.sumOfOneWord(): Int {
+fun String.score(): Int {
     return this.sumOf { it.code - 96 }
 }
