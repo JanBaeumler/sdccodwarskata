@@ -1,6 +1,6 @@
-fun testIt(a: Int, b: Int) = a.crossSum() * b.crossSum()
+fun testIt(a: Int, b: Int) = a.digitSum() * b.digitSum()
 
-fun Int.crossSum() = this.toString().sumOf { it.digitToInt() }
+fun Int.digitSum() = this.toString().sumOf { it.digitToInt() }
 
 fun testItShort(a: Int, b: Int): Int {
     return a.toString().sumOf { it.digitToInt() } * b.toString().sumOf { it.digitToInt() }
